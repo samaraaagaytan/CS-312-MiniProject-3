@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Create an Account</h1>
+
+    <form action="/signup" method="POST">
+        <label for="name">Display Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="user_id">Username:</label>
+        <input type="text" id="user_id" name="user_id" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <p>Already have an account? <a href="/signin">Sign in</a></p>
+    <p><a href="/">Back to Blog</a></p>
+</body>
+</html>

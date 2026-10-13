@@ -1,0 +1,210 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff7fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #b85c7a;
+    font-size: 40px;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+h1::before {
+    content: "♡ ";
+}
+
+h1::after {
+    content: " ♡";
+}
+
+h2 {
+    color: #b85c7a;
+    text-align: center;
+    margin: 35px auto 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e7b6c5;
+    max-width: 220px;
+}
+
+h3 {
+    color: #9d4967;
+    margin-top: 0;
+    font-size: 23px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+body > p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: white;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(184, 92, 122, 0.12);
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #9d4967;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #e7b6c5;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+textarea {
+    resize: vertical;
+}
+
+#filter,
+#category {
+    padding: 10px;
+    border: 1px solid #e7b6c5;
+    border-radius: 20px;
+    background-color: white;
+    color: #9d4967;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button {
+    background-color: #d982a3;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #b85c7a;
+}
+
+/* Sign out form */
+body > form[action="/signout"] {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+body > form[action="/signout"] button {
+    width: auto;
+    background-color: #f3c1d2;
+    color: #9d4967;
+    padding: 8px 18px;
+}
+
+body > form[action="/signout"] button:hover {
+    background-color: #e7a8bf;
+}
+
+/* Blog post cards */
+.post-card {
+    background-color: white;
+    max-width: 650px;
+    margin: 22px auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(184, 92, 122, 0.12);
+    box-sizing: border-box;
+}
+
+.post-card p:first-of-type {
+    color: #888;
+    font-size: 14px;
+}
+
+.post-card p:last-of-type {
+    color: #444;
+    white-space: pre-wrap;
+}
+
+.post-card a {
+    display: inline-block;
+    background-color: #f3c1d2;
+    color: #9d4967;
+    text-decoration: none;
+    padding: 9px 17px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-right: 8px;
+}
+
+.post-card a:hover {
+    background-color: #e7a8bf;
+}
+
+.post-card form {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.post-card button {
+    width: auto;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    form,
+    .post-card {
+        padding: 18px;
+        margin: 15px auto;
+    }
+
+    h3 {
+        font-size: 21px;
+    }
+
+    input,
+    textarea {
+        font-size: 16px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+
+    body > form[action="/signout"] button {
+        width: auto;
+    }
+}

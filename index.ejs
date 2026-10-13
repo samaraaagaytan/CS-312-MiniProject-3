@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samara Gaytan's Blog</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <h1>Samara Gaytan's Blog</h1>
+
+    <p>Welcome to my blog!</p>
+
+    <% if (user) { %>
+        <p>Welcome, <%= user.name %>!</p>
+
+        <form action="/signout" method="POST">
+            <button type="submit">Sign Out</button>
+        </form>
+    <% } else { %>
+        <p>
+            <a href="/signin">Sign In</a> |
+            <a href="/signup">Create an Account</a>
+        </p>
+    <% } %>
+
+    <% if (user) { %>
+
+        <h2>Create a New Post</h2>
+
+        <form action="/posts" method="POST">
+
+            <label for="category">Category:</label>
+
+            <select id="category" name="category" required>
+                <option value="">Choose a category</option>
+                <option value="Personal">Personal</option>
+                <option value="School">School</option>
+                <option value="Travel">Travel</option>
+                <option value="Food">Food</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <br><br>
+
+            <label for="title">Blog Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <br><br>
+
+            <label for="content">Your Blog:</label>
+            <br>
+            <textarea id="content" name="content" rows="8" cols="50" required></textarea>
+
+            <br><br>
+
+            <button type="submit">Publish Post</button>
+
+        </form>
+
+    <% } %>
+
+    <h2>Blog Posts</h2>
+
+    <label for="filter">Filter by Category:</label>
+
+    <select id="filter" onchange="filterPosts()">
+        <option value="All">All</option>
+        <option value="Personal">Personal</option>
+        <option value="School">School</option>
+        <option value="Travel">Travel</option>
+        <option value="Food">Food</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <br><br>
+
+    <% if (posts.length === 0) { %>
+        <p>No posts yet.</p>
+    <% } %>
+
+    <% posts.forEach(post => { %>
+
+        <div class="post-card" data-category="<%= post.category %>">
+
+            <h3><%= post.title %></h3>
+
+            <p>
+                By <strong><%= post.creator_name %></strong>
+                — <%= post.date_created %>
+            </p>
+
+            <p>
+                Category: <strong><%= post.category %></strong>
+            </p>
+
+            <p><%= post.body %></p>
+
+            <% if (user && user.user_id === post.creator_user_id) { %>
+                <a href="/posts/<%= post.blog_id %>/edit">Edit</a>
+
+                <form action="/posts/<%= post.blog_id %>/delete" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            <% } %>
+
+        </div>
+
+    <% }) %>
+
+    <script>
+        function filterPosts() {
+            const selectedCategory = document.getElementById("filter").value;
+            const posts = document.querySelectorAll(".post-card");
+
+            posts.forEach(post => {
+                if (
+                    selectedCategory === "All" ||
+                    post.dataset.category === selectedCategory
+                ) {
+                    post.style.display = "block";
+                } else {
+                    post.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
